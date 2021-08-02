@@ -29,7 +29,7 @@ const jobSchema = new mongoose.Schema({
         maxExp: Number
     },
     isPartTime:Boolean,
-    aboutJoining: {
+    aboutJoining: {    //description about joining:- immidate or later
         joiningType:[String],
         joiningDate:[String]
     },

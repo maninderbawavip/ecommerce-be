@@ -62,7 +62,7 @@ exports.retrictAccess = (...allowedRoles) => {
 }
 
 exports.signUp = async (req, res) => {
-
+    // console.log('bodey', req.body)
     try {
         const { email, fullName, password, phone, passwordConfirm } = req.body;
         const newUser = await User.create({ email, fullName, password, passwordConfirm, phone });
