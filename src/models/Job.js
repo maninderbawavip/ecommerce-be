@@ -28,7 +28,16 @@ const jobSchema = new mongoose.Schema({
         minExp: Number,
         maxExp: Number
     },
+    isPartTime:Boolean,
+    aboutJoining: {
+        joiningType:[String],
+        joiningDate:[String]
+    },
     jobSalary: {
+        salaryPaidType:{
+            type: String,
+            required: [true, 'Job Title length must be of 5-70 characters'],
+        },
         salaryCurrency: {
             type: String,
             enum: ["INR", "USD", "GBP", "YEN"]
@@ -41,6 +50,10 @@ const jobSchema = new mongoose.Schema({
         default: true
     },
     equityAvailable: {
+        type: Boolean,
+        default: false
+    },
+    allowForWomen: {
         type: Boolean,
         default: false
     },
