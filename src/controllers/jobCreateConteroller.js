@@ -1,51 +1,41 @@
-const User = require('../models/JobCategory')
+const User = require('../models/JobCategory');
+const UserSkill = require('../models/Skill');
 
+// createJob
 exports.createJob = async (req, res, next) => {
-
     try {
-        const AllAData = await User.create({
-            jobTitle: req.body.jobTitle,
-            jobLocation: {
-                isRemote: req.body.data.isRemote,
-                jobLocation: req.body.selectedCities,
-            },
-            experienceRange: {
-                minExp: req.body.data.minExp,
-                maxExp: req.body.data.maxExp,
-            },
-            isPartTime: req.body.isPartTime,
+        // console.log('AllAData', req.body)
+        const data = new User(req.body)
+        data.save()
 
-            aboutJoining: {
-                joiningType: req.body.data.joiningType,
-                joiningDate: req.body.data.joiningDate,
-            },
-
-            jobSalary: {
-                salaryPaidType: req.body.salaryPaidType,
-                salaryCurrency: req.body.data.salaryCurrency,
-                minSalary: req.body.data.minSalary,
-                maxSalary: req.body.data.maxSalary,
-            },
-            showSalaryToCandidates: req.body.data.showSalaryToCandidates,
-
-            equityAvailable: req.body.data.equityAvailable,
-            allowForWomen: req.body.data.allowForWomen,
-            jobDescription: req.body.data.jobDescription,
-            numberOfOpenings: req.body.data.numberOfOpenings,
+        .then((result) => {
+            console.log("wellcome", result)
+            res.status(200)
         })
-
-        console.log('AllAData', AllAData)
-
-        res.status(201).json({
-            status: 'success',
-            token,
-            data: newUser
-        })
+        .catch(err => console.log("err", err))
     } catch (err) {
         res.status(400).json({
             status: 'fail',
             data: err
         })
     }
-
 }
+// createSkill
+exports.CraeteSKills = async (req, res, next) => {
+    try {
+        // console.log('skill:-', req.body)
+        const data = new UserSkill({ name: req.body })
+        data.save()
+            .then((result) => {
+                console.log("wellcome", result)
+                res.status(200)
+            })
+            .catch(err => console.log("err", err))
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            data: err
+        })
+    }
+}
+
