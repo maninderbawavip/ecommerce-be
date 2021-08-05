@@ -16,7 +16,7 @@ const jobSeekerSchema = new mongoose.Schema({
     },
     profilePicture: {
         type: String,
-        required: true
+        // required: true
     },
     // updatePassword:{
     //     type:String,
@@ -27,7 +27,7 @@ const jobSeekerSchema = new mongoose.Schema({
     },
     //TODO:
     higherEducation: {
-        isComplited: Boolean,
+        isComplited: String,
         Name: String,
         cgpa: Number,
         startingDate:Date,
@@ -62,18 +62,18 @@ const jobSeekerSchema = new mongoose.Schema({
             required: true
         },
         location: {
-            type: Number,
+            type: String,
             required: true
         },
         startingDate: {
-            type: Number,
+            type: Date,
             required: true
         },
         endDate: {
-            type: Number,
+            type: Date,
         },
         isCurrently: {
-            type: Boolean,
+            type: String,
             default: false
         },
         // aboutInternship:{

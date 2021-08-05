@@ -5,7 +5,7 @@ const UserJobSeeker = require('../models/JobSeeker')
 exports.CraeteUser = async (req, res, next) => {
     try {
         console.log('skill:-', req.body)
-        const data = new UserSkill(req.body)
+        const data = new UserJobSeeker(req.body)
         data.save()
             .then((result) => {
                 console.log("wellcome", result)

@@ -5,7 +5,7 @@ const jobSchema = new mongoose.Schema({
 
     // maintained a reference of the relation of Job model with its category
     jobCategory: {
-        type: mongoose.Schema.ObjectID,
+        type: mongoose.Schema.ObjectId,
         ref: 'JobCategory'
     },
     jobTitle: {
@@ -15,10 +15,10 @@ const jobSchema = new mongoose.Schema({
         maxLength: 70
     },
     // jobFunction - add later on
-    desiredSkills: [{
-        type: mongoose.Schema.ObjectID,
+    desiredSkills: {
+        type: mongoose.Schema.ObjectId,
         ref: 'Skill'
-    }],
+    },
     // TODO: add musthave and optional skills
     jobLocation: {
         isRemote: Boolean,
@@ -30,8 +30,8 @@ const jobSchema = new mongoose.Schema({
     },
     isPartTime:Boolean,
     aboutJoining: {    //description about joining:- immidate or later
-        joiningType:[String],
-        joiningDate:[String]
+        joiningType:String,
+        joiningDate:Date
     },
     jobSalary: {
         salaryPaidType:{
@@ -46,16 +46,16 @@ const jobSchema = new mongoose.Schema({
         maxSalary: Number
     },
     showSalaryToCandidates: {
-        type: Boolean,
-        default: true
+        type: String,
+        // default: true
     },
     equityAvailable: {
-        type: Boolean,
-        default: false
+        type: String,
+        // default: false
     },
     allowForWomen: {
-        type: Boolean,
-        default: false
+        type: String,
+        // default: false
     },
     jobDescription: {
         type: String,
